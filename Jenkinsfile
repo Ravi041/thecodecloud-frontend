@@ -2,9 +2,9 @@ pipeline {
    agent any
    environment {
         scannerHome = tool "SonarScanner"
-        AWS_ACCOUNT_ID="314156154970"
+        AWS_ACCOUNT_ID="416496057868"
         AWS_DEFAULT_REGION="us-east-1"
-        IMAGE_REPO_NAME="devopsodia-frontendapp"
+        IMAGE_REPO_NAME="thecodecloud-frontend"
         IMAGE_TAG="${env.BUILD_NUMBER}"
         REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
    }
@@ -13,7 +13,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
             script{
-                git branch: 'main', credentialsId: 'GitHub', url: 'https://github.com/devopsodia/devopsodia-frontendapp.git'  
+                git branch: 'main', credentialsId: 'GitHub', url: 'https://github.com/Ravi041/thecodecloud-frontend.git'  
                 }  
             }
         }
@@ -32,7 +32,7 @@ pipeline {
             steps {
             script {
                // sh """aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"""
-              sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 314156154970.dkr.ecr.us-east-1.amazonaws.com"
+              sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 416496057868.dkr.ecr.us-east-1.amazonaws.com"
             }
         }
     }
