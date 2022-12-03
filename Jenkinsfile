@@ -2,7 +2,7 @@ pipeline {
    agent any
    environment {
         scannerHome = tool "SonarScanner"
-        AWS_ACCOUNT_ID="416496057868"
+        AWS_ACCOUNT_ID="981864830773"
         AWS_DEFAULT_REGION="us-east-1"
         IMAGE_REPO_NAME="thecodecloud-frontend"
         IMAGE_TAG="${env.BUILD_NUMBER}"
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: "aws-jenkins-demo",
+                    credentialsId: "jenkins-aws-integration",
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                         sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 416496057868.dkr.ecr.us-east-1.amazonaws.com"
