@@ -37,9 +37,7 @@ pipeline {
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                         sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 416496057868.dkr.ecr.us-east-1.amazonaws.com"
                     }
-            script {
-               // sh """aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"""
-            }
+            
         }
     }
 	// Building Docker images
