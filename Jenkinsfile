@@ -3,7 +3,6 @@ pipeline {
    environment {
         scannerHome = tool "SonarScanner"
         AWS_ACCOUNT_ID="981864830773"
-        AWS_PROFILE="jenkins.aws"
         AWS_DEFAULT_REGION="us-east-1"
         IMAGE_REPO_NAME="thecodecloud-frontend"
         IMAGE_TAG="${env.BUILD_NUMBER}"
